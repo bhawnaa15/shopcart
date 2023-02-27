@@ -1,0 +1,39 @@
+ 
+<div class="container">
+    <div class="row">
+        <div *ngFor="let product of allProducts, let i = index" class="col-lg-3">
+            <div class="card w-100 ">
+                <div class="card-image">
+                    <img [src]="product.image" class="card-img-top position-relative p-4" alt="Product Image" />
+                    <button class="btn position-absolute top-0 end-0 mx-2 my-2 ">
+                        <i class="like-button fa fa-heart fa-lg" (click)="onLike(i)" 
+                            [ngClass]="{'disliked' : !product.isLiked, 'liked': product.isLiked }"></i>
+                    </button>
+                </div>
+                <div class="card-body px-0">
+                    <div class="d-flex justify-content-between headings mx-2">
+                        <h5 class="fw-bold product-name">{{ product.title }}</h5>
+                        <h6 class="text-dark fw-bold">${{ product.price }}</h6>
+                    </div>
+                    <div class=" text-success mb-2 mx-2" >
+                        <small >
+                            <span>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half"></i></span>
+                            <span class="mx-1">({{ product.rating.rate }})</span>
+                        </small>
+                    </div>
+                    <p class="desription mx-2">
+                        {{ product.description }}
+                    </p>
+                    <button type="button" class="btn mx-2" data-mdb-ripple-color="dark">
+                        Add to cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

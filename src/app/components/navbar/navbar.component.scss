@@ -1,0 +1,26 @@
+.navbar {
+    .container-fluid {
+
+        .navbar-collapse {
+            .navbar-nav {
+                .nav-item {
+                    color: black;
+                    font-weight: 450;
+                }
+            }
+
+            .account {
+                margin-left: 16%;
+
+                a.references {
+                    color: rgba(12, 12, 12, 0.805);
+                }
+
+                a.references:hover {
+                    text-decoration: none;
+                    color: black;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+.container {
+    .card {
+        width: 25%;
+
+        .card-image {
+            .card-img-top{
+                height: 250px;
+                object-fit: contain;
+            }
+            .btn {
+                border: none;
+
+                .like-button, .disliked {
+                    color: rgba(128, 128, 128, 0.419);
+                }
+
+                .like-button:hover, .liked {
+                    color: rgb(219, 32, 125)
+                }
+            }
+
+            .btn:focus {
+                border: none;
+            }
+        }
+
+        .card-body {
+            .headings {
+                color: rgb(56, 39, 47);
+                .product-name{
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .btn {
+                background-color: rgba(72, 15, 110, 0.712);
+                color: white;
+            }
+
+            .btn:hover {
+                opacity: 0.8;
+            }
+            .desription{
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}
