@@ -1,7 +1,7 @@
  
 <div class="container">
     <div class="row">
-        <div *ngFor="let product of allProducts, let i = index" class="col-lg-3">
+        <div *ngFor="let product of allProducts, let i = index" class="col-lg-3" style="margin-bottom: 25px;">
             <div class="card w-100 ">
                 <div class="card-image">
                     <img [src]="product.image" class="card-img-top position-relative p-4" alt="Product Image" />
@@ -29,7 +29,7 @@
                     <p class="desription mx-2">
                         {{ product.description }}
                     </p>
-                    <button type="button" class="btn mx-2" data-mdb-ripple-color="dark">
+                    <button type="button" class="btn mx-2" data-mdb-ripple-color="dark" (click)="viewCart(product)">
                         Add to cart
                     </button>
                 </div>

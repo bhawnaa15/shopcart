@@ -1,0 +1,189 @@
+
+  .bottom{
+    line-height: 1.8;
+    font-size: 14px;
+  }
+  
+  a.references{
+    color: rgba(12, 12, 12, 0.805);
+  }
+  a.references:hover{
+      text-decoration: none;
+      color: black;
+      cursor: pointer;
+  }
+  .logo{
+    font-size: x-large;
+    font-weight: bold;
+  }
+
+  .payments{
+    flex-wrap: wrap;
+    flex-grow: 3;
+    width: 60%;
+  }
+
+  .like-button{
+    background-color: white;
+    border: none;
+  }
+  .fa-heart{
+    color: rgba(177, 176, 176, 0.527);
+  }
+  .fa-heart:hover{
+      color: red;
+  }
+
+
+
+  @media screen and (max-width: 426px) {
+    .container, .container-fluid, .card-container, .row{
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .button-scroll{
+        overflow-x: scroll;
+      }
+    .dropdown-buttons{
+        height: 10%;
+    }
+    .top-image, .payments{
+        height: 100%;
+        width: 100%;
+    }
+    .image-button{
+        padding: 3px 7px !important;
+        font-size: 10px;
+        margin: 0 0 20px 27px !important;
+    }
+    .image-caption{
+        font-size: small;
+        font-weight: bold;
+        padding: 10px !important;
+        color: rgb(15, 15, 15) !important;
+    }
+    .dropdown-container, .accepted-payments{
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .laptop-for-you, .accepted-payments{
+        margin-left: 12px !important;
+        padding-left: 0 !important;
+    }
+
+    .help-center{
+        margin-bottom: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: small;
+    }
+    .top, .top-button{
+        font-size: small;
+        padding: 0 !important;
+        justify-content: none !important;
+    }
+    .top-content, .bottom-links{
+        margin: 0 !important;
+    }
+  }
+
+  @media screen and (min-width: 427px) and (max-width: 769px) {
+    .container, .container-fluid, .card-container{
+        margin: 0 24px !important;
+        padding: 0 !important;
+    }
+    .top-image{
+        height: 100%;
+        width: 100%;
+    }
+    .payments{
+        width: 45%;
+    }
+    .image-button{
+        padding: 3px 7px !important;
+        font-size: 10px;
+        margin: 0 0 20px 27px !important;
+    }
+    .image-caption{
+        font-size: small;
+        font-weight: bold;
+        padding: 10px !important;
+        color: rgb(15, 15, 15) !important;
+    }
+    .dropdown-container, .accepted-payments{
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .laptop-for-you, .accepted-payments{
+        margin-left: 12px !important;
+        padding-left: 0 !important;
+    }
+
+    .help-center{
+        margin-bottom: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: small;
+    }
+    .top, .top-button{
+        font-size: small;
+        padding: 0 !important;
+        justify-content: none !important;
+    }
+    .top-content, .row{
+        margin: 0 !important;
+    }
+    .bottom-links{
+       margin: 15px 0 0 0 !important;
+    }
+    .row{
+        padding-left: 0 !important;
+    }
+  }
+
+  @media screen and (min-width:769px) and (max-width:1025px) {
+    .container, .container-fluid, .card-container{
+        margin: 0 24px !important;
+        padding: 0 !important;
+    }
+    .top-image{
+        height: 100%;
+        width: 101%;
+    }
+    .payments{
+        width: 90%;
+    }
+    .bottom-links{
+        margin: 15px 0 0 0 !important;
+     }
+     .help-center{
+        margin-bottom: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: small;
+    }
+    .top-content, .row, .nav-item{
+        margin: 0 !important;
+    }
+    .navbar-nav{
+        font-size: small;
+    }
+    .account {
+        margin-left: 9%;
+    }
+    .top, .top-button{
+        font-size: small;
+        padding: 0 !important;
+    }
+  }
+  @media screen and (min-width:1025px) and (max-width:1440px){
+    .top-image{
+        width: 100%;
+    }
+    .payments{
+        width: 75%;
+    }
+    .account {
+        margin-left: 15%;
+    }
+  }

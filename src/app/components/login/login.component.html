@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="container form-content p-3 ">
-                <form action="#" [formGroup]="loginform" #myForm="ngForm">
+                <form action="#" [formGroup]="loginform" #myForm="ngForm" (ngSubmit)="onSubmit()">
                     <div class="row">
                         <label for="username" class="px-0">Username</label>
                     </div>
@@ -33,7 +33,7 @@
                         <input type="password" id="password" class="rounded my-2 py-1" formControlName="password">
                     </div>
                     <div class="row mt-4 mb-2">
-                        <button class="login-button py-2" type="submit" routerLink="/home" [disabled]="!myForm.form.valid">Log-in to your
+                        <button class="login-button py-2" type="submit" [disabled]="!myForm.form.valid">Log-in to your
                             account</button>
                     </div>
                     <div >

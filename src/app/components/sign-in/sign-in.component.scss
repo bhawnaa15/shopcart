@@ -8,8 +8,7 @@
             overflow: hidden
         }
         .form{
-
-            border-radius: 5px;
+           border-radius: 5px;
             height: 50%;
             margin: auto;
             width: 50%;
@@ -30,6 +29,11 @@
         
                 .signin-button:focus {
                     box-shadow: none;
+                }
+                .row{
+                    input.ng-invalid.ng-touched{
+                        border: 1px solid red;
+                    }
                 }
             }
         }

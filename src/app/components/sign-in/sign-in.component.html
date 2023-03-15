@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="container form-content p-3 ">
-                <form action="#" [formGroup]="signInForm">
+                <form action="#" [formGroup]="signInForm" #myForm="ngForm" (ngSubmit)="onSubmit()">
                     <div class="row">
                         <label for="email" class="px-0">Email</label>
                     </div>
@@ -42,12 +42,11 @@
                         <input type="password" id="password" class="rounded my-2 py-1" formControlName="password">
                     </div>
                     <div class="row mt-4 mb-2">
-                        <button class="signin-button py-2" type="submit" routerLink="/login">Sign in</button>
+                        <button class="signin-button py-2" type="submit" [disabled]="!myForm.form.valid">Sign in</button>
                     </div>
                     <div >
-                        Already a member? <a href="#" class="mb-5 text-decoration-none">Log-in</a> to unlock...
+                        Already a member? <a routerLink="/login" class="mb-5 text-decoration-none">Log-in</a> to unlock...
                     </div>
-                    
                 </form>
             </div>
         </div>

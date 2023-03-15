@@ -24,3 +24,53 @@
         }
     }
 }
+
+.cart {
+    background-color: white;
+    border: none;
+}
+
+.main {
+
+    .input-container {
+        position: relative;
+
+        .bb-dropdown {
+            border: none;
+            background-color: white;
+            width: 80px;
+
+            .option-value {
+                float: left;
+            }
+        }
+
+        .dropdown-container {
+            box-shadow: 0 4px 4px -3px rgb(0 0 0/5%), 0 3px 3px 1px rgb(0 0 0/5%), 0 2px 6px 2px rgb(0 0 0/5%);
+            border-radius: 4px;
+            padding: 0.5rem 0.5rem !important;
+            background-color: white;
+            z-index: 1;
+
+            .list-items {
+                padding-inline-start: 0 !important;
+                margin-bottom: 0 !important;
+
+                .option-items {
+                    list-style-type: none;
+
+                    .options {
+                        padding: 0.5rem 1rem 0.5rem !important;
+                        border-radius: 4px;
+                        text-decoration: none;
+                    }
+
+                    .options:hover {
+                        text-decoration: none;
+                        background-color: rgb(197 196 196 / 21%);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,71 @@
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid d-flex justify-content-between mx-3">
+    <a class="navbar-brand fw-bolder" href="#">
+      <img src="assets/images/bag.png" alt="Shopcart" class="rounded-circle p-0 mr-2 mb-2" width="35px"
+        height="35px">
+      Shopcart
+    </a>
+    <input class="form-control w-25 account" type="search" placeholder="Search" aria-label="Search" >
+    <div class="navbar-buttons">
+      <button class="fw-bold cart mx-2" (click)="clearStorage()">
+        <i class="fa fa-user mx-1"></i>Log-out
+      </button>
+      <button type="button" class="btn mx-2" data-mdb-ripple-color="dark" (click)="clearEntries()">
+        Remove All
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Empty Cart -->
+<div class="container my-3" *ngIf="(cartEntries$ | async ).length===0" >
+  <div class="card">
+    <h5 class="m-3">My Cart</h5>
+  </div>
+  <div class="center">
+    <img src="https://media.istockphoto.com/id/861576608/vector/empty-shopping-bag-icon-online-business-vector-icon-template.jpg?s=612x612&w=0&k=20&c=I7MbHHcjhRH4Dy0NVpf4ZN4gn8FVDnwn99YdRW2x5k0=" alt="#" width="300px" height="300px">
+    <h5>Your Shopping Bag is empty</h5>
+    <h6>Add item to it now</h6>
+    <button type="button" class="btn mx-2" data-mdb-ripple-color="dark" routerLink="/home" >Shop Now</button>
+  </div>
+</div>
+
+<!-- Cart Table -->
+<div class="container" *ngIf="(cartEntries$ | async ).length!==0" >
+  <div class="cart-table">
+    <div class="cart-product">
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th>S.No.</th>
+            <th>Product Name</th>
+            <th>Product Image</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entry of  (cartEntries$ | async ) ;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{entry.product.title}}</td>
+            <td><img src="{{entry.product.image}}" width="200px" height="200px"></td>
+            <td class="description">{{entry.product.description}}</td>
+            <td>${{entry.product.price}}</td>
+            <td>${{entry.product.price}}</td>
+            <td><button (click)="less(entry)"><i class="fa fa-trash-o"></i></button></td>
+          </tr>
+        </tbody>
+  
+      </table>
+      <div class="position-relative my-4 bottom">
+        <a routerLink="/home" class="more-items mb-5">Add More Items</a>
+        <button type="button" class="btn mx-2 float-right position-absolute check-out mb-5" data-mdb-ripple-color="dark">Check Out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
