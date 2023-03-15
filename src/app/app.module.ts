@@ -9,6 +9,11 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
+import { CartComponent } from './components/cart/cart.component';
+import { StoreModule } from '@ngrx/store';
+import { cartReducer, metaReducerLocalStorage } from './store/reducers';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +22,18 @@ import { HomepageComponent } from './homepage/homepage.component';
     SignInComponent,
     ProductCardComponent,
     NavbarComponent,
-    HomepageComponent
+    HomepageComponent,
+    CartComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule, 
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AlertModule,
+    StoreModule.forRoot({ cartEntries: cartReducer }, { metaReducers: [ metaReducerLocalStorage ] }),
   ],
   providers: [],
   bootstrap: [AppComponent]
