@@ -43,6 +43,7 @@
             <th>Product Name</th>
             <th>Product Image</th>
             <th>Description</th>
+            <th>Quantity</th>
             <th>Price</th>
             <th>Total</th>
             <th>Action</th>
@@ -54,9 +55,13 @@
             <td>{{entry.product.title}}</td>
             <td><img src="{{entry.product.image}}" width="200px" height="200px"></td>
             <td class="description">{{entry.product.description}}</td>
+            <td>1</td>
             <td>${{entry.product.price}}</td>
             <td>${{entry.product.price}}</td>
-            <td><button (click)="less(entry)"><i class="fa fa-trash-o"></i></button></td>
+            <td>
+              <button (click)="removeItem(entry)"><i class="fa fa-trash-o"></i></button>
+              <button (click)="addItem(entry.product)"><i class="fa fa-plus"></i></button>
+            </td>
           </tr>
         </tbody>
   

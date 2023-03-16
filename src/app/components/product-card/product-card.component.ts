@@ -26,6 +26,9 @@ export class ProductCardComponent implements OnInit {
   ngOnInit() {
     this.fetchProducts()
   }
+  onCardDisplay(){
+    this.routes.navigate(['/product-detail']);
+  }
 
   private selectItemAlert(message: any) {
     Swal.fire({
@@ -52,7 +55,6 @@ export class ProductCardComponent implements OnInit {
   viewCart(product:IProductCard) {
     this.cartStatus=sessionStorage.getItem('login');
       if(this.cartStatus === "true"){
-        console.log(this.cartStatus);
         this.store.dispatch(addProduct(product));
         this.itemAddedAlert("Item Added");
       }
@@ -60,6 +62,7 @@ export class ProductCardComponent implements OnInit {
         this.selectItemAlert("Please Login first");
       }
     }
+
 
 
   public onLike(i: number) {

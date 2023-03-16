@@ -36,8 +36,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  constructor(private routes:Router){
+  constructor(private route:Router){
   }
+  
   private logininAlert(message: any) {
     Swal.fire({
       position: 'top-end',
@@ -61,12 +62,12 @@ export class LoginComponent implements OnInit {
   }
   onButtonClick(){
     if(this.loginFormValue.username===this.signinFormValue.email && this.loginFormValue.password===this.signinFormValue.password){
-      this.routes.navigate(['/home']);
+      this.route.navigate(['/home']);
       this.logininAlert("Successfully Logged In");
     }
     else{
-      this.routes.navigate(['/sigin']);
-      this.logininAlert("Successfully Logged In");
+      this.route.navigate(['/sigin']);
+      this.logininAlert("Account doesnot exist");
     }
   }
 }

@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<div class="main">
+    <div class="card">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{product.image}}" width="350px" height="350px" class="product-image">
+            </div>
+            <div class="col-md-6">
+                <h4>{{product.title}}</h4>
+                <p>{{product.description}}</p>
+                <div>
+                    <h6>${{product.price}}</h6>
+                    <div class=" text-success mb-2 mx-2" >
+                        <small >
+                            <span>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half"></i></span>
+                            <span class="mx-1">({{product.rating.rate }})</span>
+                        </small>
+                    </div>
+                </div>
+                <button type="button" class="btn mx-2" data-mdb-ripple-color="dark" (click)="viewCart(product)">
+                    Add to cart
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
