@@ -81,6 +81,7 @@ export class CartComponent implements OnInit {
     if (this.cartStatus === "true") {
       this.store.dispatch(addProduct(product));
       this.itemAddedAlert("Item Added");
+      window.location.reload();
     }
   }
 
@@ -106,6 +107,7 @@ export class CartComponent implements OnInit {
    */
   public removeItem(entry: ProductGroup) {
     this.store.dispatch(removeProduct(entry.product));
+    window.location.reload();
   }
 
   /**

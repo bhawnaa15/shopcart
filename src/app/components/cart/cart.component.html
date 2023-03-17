@@ -53,9 +53,9 @@
             <td>{{entry.product.title}}</td>
             <td><img src="{{entry.product.image}}" width="200px" height="200px"></td>
             <td>
-              <button (click)="addItem(entry.product)"><i class="fa fa-plus"></i></button>
+              <button (click)="removeItem(entry)"><i class="fa fa-minus"></i></button>
               <span class="quantity">{{entry.count}}</span>
-              <button (click)="removeItem(entry)"><i class="fa fa-trash-o"></i></button>
+              <button (click)="addItem(entry.product)"><i class="fa fa-plus"></i></button>
             </td>
             <td>${{entry.product.price * entry.count}}</td>
             <td>${{(0.18 * entry.product.price * entry.count).toFixed(2)}}</td>
