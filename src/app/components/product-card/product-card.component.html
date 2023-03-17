@@ -1,10 +1,10 @@
  
 <div class="container">
     <div class="row">
-        <div *ngFor="let product of allProducts, let i = index" class="col-lg-3" style="margin-bottom: 25px;">
+        <div *ngFor="let product of allProducts | searchFilter:searchText , let i = index " class="col-lg-3" style="margin-bottom: 25px;">
             <div class="card w-100">
-                <div class="card-image" routerLink="/home/product/{{product.id}}">
-                    <img [src]="product.image" class="card-img-top position-relative p-4" alt="Product Image"/>
+                <div class="card-image" >
+                    <img [src]="product.image" class="card-img-top position-relative p-4" routerLink="/home/product/{{product.id}}" alt="Product Image"/>
                     <button class="btn position-absolute top-0 end-0 mx-2 my-2 ">
                         <i class="like-button fa fa-heart fa-lg" (click)="onLike(i)" 
                             [ngClass]="{'disliked' : !product.isLiked, 'liked': product.isLiked }"></i>

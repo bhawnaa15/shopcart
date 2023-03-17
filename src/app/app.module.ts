@@ -14,6 +14,8 @@ import { StoreModule } from '@ngrx/store';
 import { cartReducer, metaReducerLocalStorage } from './store/reducers';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { FooterComponent } from './components/footer/footer.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import{SearchFilterPipe} from 'src/app/pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,10 @@ import { FooterComponent } from './components/footer/footer.component';
     NavbarComponent,
     HomepageComponent,
     CartComponent,
-    FooterComponent
+    FooterComponent,
+    ProductDetailComponent,
+    SearchFilterPipe
+
   ],
   imports: [
     BrowserModule,

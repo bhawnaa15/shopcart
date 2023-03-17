@@ -33,7 +33,8 @@ export class SignInComponent implements OnInit {
   
   onSubmit(){
     sessionStorage.setItem("signinFormData", JSON.stringify(this.signInForm.value));
-    this.routes.navigate(['/login']);
+    this.routes.navigate(['/login']).then(() => {
+      window.location.reload();
+    })
   }
-
 }

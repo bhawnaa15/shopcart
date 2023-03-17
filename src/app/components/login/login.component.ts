@@ -11,34 +11,33 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  public login =true 
+  public login = true
   public loginform: FormGroup;
-  public loginFormValue:ILoginForm;
-  public signinFormValue:ISigninForm;
+  public loginFormValue: ILoginForm;
+  public signinFormValue: ISigninForm;
+
+  constructor(private route: Router) {
+  }
 
   ngOnInit() {
-    this.loginform = new FormGroup ({
+    this.loginform = new FormGroup({
       username: new FormControl(null, Validators.required),
       password: new FormControl('', Validators.compose([
         Validators.minLength(8),
         Validators.required,
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
-     ])),
+      ])),
     })
-    
-    const loginValue=sessionStorage.getItem("loginFormData")
-    if(loginValue){
-      this.loginFormValue=JSON.parse(loginValue)
+    const loginValue = sessionStorage.getItem("loginFormData")
+    if (loginValue) {
+      this.loginFormValue = JSON.parse(loginValue)
     }
-    const signinValue=sessionStorage.getItem("signinFormData")
-    if(signinValue){
-      this.signinFormValue=JSON.parse(signinValue)
+    const signinValue = sessionStorage.getItem("signinFormData")
+    if (signinValue) {
+      this.signinFormValue = JSON.parse(signinValue)
     }
   }
 
-  constructor(private route:Router){
-  }
-  
   private logininAlert(message: any) {
     Swal.fire({
       position: 'top-end',
@@ -49,23 +48,24 @@ export class LoginComponent implements OnInit {
       timerProgressBar: false,
     });
   }
-   
-  onSubmit(){
-    if(sessionStorage.getItem("signinFormData")){
+
+  public onSubmit() {
+    if (sessionStorage.getItem("signinFormData")) {
       sessionStorage.setItem("loginFormData", JSON.stringify(this.loginform.value));
       sessionStorage.setItem("login", "true");
       this.onButtonClick()
     }
-    else{
+    else {
       this.logininAlert("SignIn First");
     }
   }
-  onButtonClick(){
-    if(this.loginFormValue.username===this.signinFormValue.email && this.loginFormValue.password===this.signinFormValue.password){
-      this.route.navigate(['/home']);
+
+  public onButtonClick() {
+    if (this.loginFormValue.username === this.signinFormValue.email && this.loginFormValue.password === this.signinFormValue.password) {
+      this.route.navigate(['/home'])
       this.logininAlert("Successfully Logged In");
     }
-    else{
+    else {
       this.route.navigate(['/sigin']);
       this.logininAlert("Account doesnot exist");
     }

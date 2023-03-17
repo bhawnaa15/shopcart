@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from 'src/app/services/product.service';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
@@ -19,6 +18,7 @@ export class ProductDetailComponent implements OnInit{
     public product;
     public productId;
     public allProducts: IProductCard[] = [];
+    public cartStatus:string="";
 
     constructor(private activatedRoute:ActivatedRoute, private store:Store, private http: HttpClient){
     }
@@ -58,7 +58,6 @@ export class ProductDetailComponent implements OnInit{
       });
     }
 
-    cartStatus:string="";
     viewCart(product:IProductCard) {
       this.cartStatus=sessionStorage.getItem('login');
         if(this.cartStatus === "true"){

@@ -33,7 +33,7 @@
                     text-decoration: none;
                     color: black;
                     position: absolute !important;
-                    top: 5px;
+                    top: 85px;
                     right: 128px;
                 }
                 .more-items:hover {
@@ -41,7 +41,7 @@
                     color: rgb(88, 88, 88);
                 }
                 .check-out{
-                    top: 0;
+                    top: 80px;
                     right: 5px;
                     background-color: black;
                     color: white;
@@ -61,7 +61,15 @@ table{
     text-align: center;
 }
 
-
+.total{
+    display: inline;
+    position: absolute;
+    right: 35px;
+}
+.quantity{
+    width: 25px;
+    display: inline-block;
+}
 .navbar{
     .container-fluid{
         .navbar-buttons{

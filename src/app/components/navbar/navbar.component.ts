@@ -1,10 +1,10 @@
-import { Component,Input,Output,HostListener,EventEmitter } from '@angular/core';
+import { Component, Input, Output, HostListener, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectCountProducts } from 'src/app/store/selectors';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-
+import {InteractionServiceService} from '../../services/interaction.service' 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -50,7 +50,7 @@ export class NavbarComponent {
   }
 
   countProducts$: Observable<number>;
-  constructor(private store:Store, private routes: Router) {
+  constructor(private store: Store, private routes: Router, private _interactionService : InteractionServiceService) {
     this.countProducts$ = store.select(selectCountProducts);
   }
 
@@ -70,33 +70,47 @@ export class NavbarComponent {
     this.optionValue = value;
     this.showDropdown = !this.showDropdown;
   }
+  /**
+   * Property to handle chnage event on input 
+   */
+  @Output() change = new EventEmitter<any>();
 
-
-  loginStatus:string="";
+  loginStatus: string = "";
 
   ngOnInit(): void {
-  
+  }
+
+  public filterValue: string = "";
+
+  public applyFilter(filterValue: any) {
+    // this.filterValue = (filterValue.target as HTMLInputElement).value;
+    this._interactionService.sendProductCard(filterValue.target.value);
   }
 
   loginAuth() {
-    this.loginStatus=sessionStorage.getItem('login');
-      if(this.loginStatus === "true"){
-        console.log(this.loginStatus);
-        this.routes.navigate(['/add-to-cart']);
-      }
-      else{
-        this.selectItemAlert("Please Login first");
-      }
+    this.loginStatus = sessionStorage.getItem('login');
+    if (this.loginStatus === "true") {
+      console.log(this.loginStatus);
+      this.routes.navigate(['/add-to-cart']);
     }
-
-    private selectItemAlert(message: any) {
-      Swal.fire({
-        position: 'top-end',
-        html: message,
-        timer: 2000,
-        width: '500px',
-        showConfirmButton: false,
-        timerProgressBar: false,
-      });
+    else {
+      this.selectItemAlert("Please Login first");
     }
+  }
+  /**
+   * Method to emit onvalue change event
+   */
+  public inputValueHandler(event: any) {
+      this.change.emit(event);
+  }
+  private selectItemAlert(message: any) {
+    Swal.fire({
+      position: 'top-end',
+      html: message,
+      timer: 2000,
+      width: '500px',
+      showConfirmButton: false,
+      timerProgressBar: false,
+    });
+  }
 }

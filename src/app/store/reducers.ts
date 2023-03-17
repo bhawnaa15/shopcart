@@ -3,12 +3,13 @@ import { createReducer, on, ActionReducer, INIT, UPDATE } from '@ngrx/store';
 import { addProduct, clearCart, removeProduct } from './actions';
 
 export const intialCartEntries: IProductCard[] = [];
-
 export const cartReducer = createReducer(
   intialCartEntries,
+  
 
   on(clearCart, _ => [] ),
 
+ 
   on(addProduct, (entries, product) => {
     const entriesClone: IProductCard[] = JSON.parse(JSON.stringify(entries));
     entriesClone.push(product);
@@ -22,7 +23,7 @@ export const cartReducer = createReducer(
         entriesClone.splice(entriesClone.indexOf(found), 1)
     }
     return entriesClone;
-  })
+  }),
 )
 
 export const metaReducerLocalStorage = (reducer: ActionReducer<any>): ActionReducer<any> => {

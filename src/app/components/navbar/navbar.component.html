@@ -38,7 +38,7 @@
           <a class="nav-link active" aria-current="page" href="#">Delivery</a>
         </li>
       </ul>
-      <input class="form-control w-25 account" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control w-25 account"  type="search" placeholder="Search" aria-label="Search" (keyup)="applyFilter($event)"  (change)="inputValueHandler($event)">
 
       <div class="account">
         <button routerLink="/login" class="fw-bold references cart mx-2">

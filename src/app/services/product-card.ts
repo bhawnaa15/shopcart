@@ -7,6 +7,8 @@ export interface IProductCard {
     category? : string;
     image: string;
     isLiked: boolean;
+    total?:number;
+    quantity?:number;
 }
 export interface ILoginForm {
     username: string; 

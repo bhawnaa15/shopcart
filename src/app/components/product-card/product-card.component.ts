@@ -6,6 +6,8 @@ import { map, Observable } from 'rxjs';
 import { addProduct } from 'src/app/store/actions';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import {InteractionServiceService} from '../../services/interaction.service' 
+
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
@@ -19,12 +21,22 @@ export class ProductCardComponent implements OnInit {
 
   public allProducts: IProductCard[] = [];
 
+  /**
+  * Property to apply search filter in table
+  */
+  @Input() public searchText = '';
 
-  constructor(private http: HttpClient, private store: Store, private routes:Router) {
+  constructor(private http: HttpClient, private store: Store, private routes:Router, private _interactionService : InteractionServiceService) {
   }
 
   ngOnInit() {
     this.fetchProducts()
+    this._interactionService.productCard$.subscribe(
+      item => {
+        this.searchText=item;
+        // this.search = true;
+      }
+    );
   }
   onCardDisplay(){
     this.routes.navigate(['/product-detail']);
@@ -64,13 +76,10 @@ export class ProductCardComponent implements OnInit {
     }
 
 
-
   public onLike(i: number) {
     this.allProducts[i].isLiked = !this.allProducts[i].isLiked;
   }
   
-
-
   private fetchProducts() {
     this.http.get('https://fakestoreapi.com/products')
       .pipe(map((product) => {
