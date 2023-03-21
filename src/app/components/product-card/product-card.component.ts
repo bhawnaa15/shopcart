@@ -34,7 +34,6 @@ export class ProductCardComponent implements OnInit {
     this._interactionService.productCard$.subscribe(
       item => {
         this.searchText=item;
-        // this.search = true;
       }
     );
   }
@@ -74,7 +73,6 @@ export class ProductCardComponent implements OnInit {
         this.selectItemAlert("Please Login first");
       }
     }
-
 
   public onLike(i: number) {
     this.allProducts[i].isLiked = !this.allProducts[i].isLiked;

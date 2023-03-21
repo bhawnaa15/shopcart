@@ -3,7 +3,6 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'searchFilter'
 })
 export class SearchFilterPipe implements PipeTransform {
-
   /**
    * Method to search the item from table
    */

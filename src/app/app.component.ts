@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslationService } from './services/translation.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'shopcart';
-  ngOnInit(){
+  constructor( private translateService: TranslationService) {
+    console.log(translateService.data);
   }
+  ngOnInit(){ }
 }

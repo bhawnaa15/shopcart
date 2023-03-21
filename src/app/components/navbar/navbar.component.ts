@@ -14,12 +14,16 @@ export class NavbarComponent {
   /**
    * Property to hold the option values
    */
-  public optionValue = 'Products'
+  public optionValue = 'Language'
 
   /**
    * Property to display the dropdown or not 
    */
   public showDropdown = false;
+  public navlinkTwo = 'navlinkTwo';
+  public navlinkThree = 'navlinkThree';
+  public navlinkFour = 'navlinkFour';
+  public navlinkFive = 'navlinkFive';
 
   /**
    * Property to decide the id of input container
@@ -31,10 +35,8 @@ export class NavbarComponent {
    * Property to options in dropdown
    */
   @Input() options = [
-    { id: 0, name: "All" },
-    { id: 1, name: "Electronics" },
-    { id: 2, name: "Fashion" },
-    { id: 3, name: "Jewllery" },
+    { id: 0, name: "English" },
+    { id: 1, name: "Hindi" },
   ];
 
   /**
@@ -50,8 +52,13 @@ export class NavbarComponent {
   }
 
   countProducts$: Observable<number>;
+   
   constructor(private store: Store, private routes: Router, private _interactionService : InteractionServiceService) {
     this.countProducts$ = store.select(selectCountProducts);
+  }
+
+  changeLanguage(language){
+    console.log("hello")
   }
 
   /**
@@ -83,7 +90,6 @@ export class NavbarComponent {
   public filterValue: string = "";
 
   public applyFilter(filterValue: any) {
-    // this.filterValue = (filterValue.target as HTMLInputElement).value;
     this._interactionService.sendProductCard(filterValue.target.value);
   }
 

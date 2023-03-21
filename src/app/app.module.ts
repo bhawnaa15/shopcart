@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,20 +15,27 @@ import { cartReducer, metaReducerLocalStorage } from './store/reducers';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-import{SearchFilterPipe} from 'src/app/pipes/filter.pipe';
+import{ SearchFilterPipe} from 'src/app/pipes/filter.pipe';
+import { HttpClient} from '@angular/common/http';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslatePipe } from './pipes/translate.pipe';
+import { TranslationService } from './services/translation.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignInComponent,
-    ProductCardComponent,
+    ProductCardComponent, 
     NavbarComponent,
     HomepageComponent,
     CartComponent,
     FooterComponent,
     ProductDetailComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    TranslatePipe,
 
   ],
   imports: [
@@ -39,8 +46,35 @@ import{SearchFilterPipe} from 'src/app/pipes/filter.pipe';
     HttpClientModule,
     AlertModule,
     StoreModule.forRoot({ cartEntries: cartReducer }, { metaReducers: [ metaReducerLocalStorage ] }),
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  })
   ],
-  providers: [],
+  providers: [
+    TranslationService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: setupTranslateServiceFactory,
+      deps: [
+        TranslationService
+      ],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
+export function setupTranslateServiceFactory(
+  service: TranslationService): Function {
+return () => service.getJSON();
+}

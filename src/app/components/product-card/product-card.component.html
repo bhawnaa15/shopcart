@@ -1,7 +1,7 @@
  
 <div class="container">
     <div class="row">
-        <div *ngFor="let product of allProducts | searchFilter:searchText , let i = index " class="col-lg-3" style="margin-bottom: 25px;">
+        <div *ngFor="let product of allProducts | searchFilter: searchText , let i = index " class="col-lg-3" style="margin-bottom: 25px;">
             <div class="card w-100">
                 <div class="card-image" >
                     <img [src]="product.image" class="card-img-top position-relative p-4" routerLink="/home/product/{{product.id}}" alt="Product Image"/>
